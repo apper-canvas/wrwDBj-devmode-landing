@@ -193,7 +193,7 @@ const Home = () => {
                   transition={{ duration: 0.5 }}
                   className="text-4xl md:text-5xl font-bold text-surface-900 dark:text-white leading-tight"
                 >
-                  Visualize. <span className="text-gradient">Inspect.</span> Code.
+                  Analyze. <span className="text-gradient">Transform.</span> Build.
                 </motion.h1>
                 <motion.p 
                   initial={{ opacity: 0, y: 20 }}
@@ -209,11 +209,21 @@ const Home = () => {
                   transition={{ duration: 0.5, delay: 0.2 }}
                   className="mt-8 flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4"
                 >
-                  <a href="#cta" className="btn btn-primary animate-pulse-glow">
-                    Try it free
-                  </a>
-                  <a href="#how-it-works" className="btn btn-outline">
-                    See how it works
+                  <motion.a 
+                    href="#cta" 
+                    className="btn btn-primary group relative overflow-hidden shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    <span className="relative z-10 flex items-center">
+                      Get started for free
+                      <ArrowRight size={18} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                    </span>
+                    <span className="absolute inset-0 bg-gradient-to-r from-primary to-accent-blue opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-md"></span>
+                  </motion.a>
+                  <a href="#how-it-works" className="btn btn-outline group">
+                    <span>See how it works</span>
+                    <ChevronDown size={18} className="ml-2 transition-transform duration-300 group-hover:translate-y-1" />
                   </a>
                 </motion.div>
               </div>
@@ -655,7 +665,7 @@ const Home = () => {
               transition={{ duration: 0.5 }}
               className="text-3xl md:text-4xl font-bold text-surface-900 dark:text-white mb-6"
             >
-              See the code. Build with clarity.
+              Transform Your Development Experience
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -664,7 +674,7 @@ const Home = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-xl text-surface-600 dark:text-surface-300 mb-8 max-w-2xl mx-auto"
             >
-              Join thousands of developers and designers who use DevMode to bridge the gap between design and development.
+              Join thousands of developers and designers who use DevMode to bridge the gap between design and code. Start building better interfaces today.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -673,13 +683,29 @@ const Home = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4"
             >
-              <a href="#" className="btn btn-primary text-lg px-8 py-4">
-                Start using DevMode
-                <ArrowRight size={20} className="ml-2" />
-              </a>
-              <a href="#" className="btn btn-outline text-lg px-8 py-4">
-                Schedule a demo
-              </a>
+              <motion.a 
+                href="#" 
+                className="btn btn-primary text-lg px-8 py-4 group relative overflow-hidden shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                <span className="relative z-10 flex items-center">
+                  Launch DevMode Now
+                  <ArrowRight size={20} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-r from-primary to-accent-blue opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-md"></span>
+              </motion.a>
+              <motion.a 
+                href="#" 
+                className="btn btn-outline text-lg px-8 py-4 group"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                <span className="flex items-center">
+                  Watch Demo
+                  <ExternalLink size={18} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+              </motion.a>
             </motion.div>
           </div>
         </section>

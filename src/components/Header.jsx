@@ -94,12 +94,15 @@ const Header = () => {
             </a>
             <motion.a 
               href="#cta" 
-              className="btn btn-primary shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40"
+              className="btn btn-primary group relative overflow-hidden shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
-              <span>Try it free</span>
-              <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
+              <span className="relative z-10 flex items-center">
+                Get started
+                <ArrowRight size={16} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+              </span>
+              <span className="absolute inset-0 bg-gradient-to-r from-primary to-accent-blue opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-md"></span>
             </motion.a>
           </div>
           
@@ -166,9 +169,9 @@ const Header = () => {
                 <a 
                   href="#cta" 
                   onClick={() => setIsMenuOpen(false)} 
-                  className="flex items-center justify-between px-3 py-2 mt-2 rounded-md text-base font-medium bg-primary text-white hover:bg-primary-dark transition-colors duration-200"
+                  className="flex items-center justify-between px-3 py-2 mt-2 rounded-md text-base font-medium bg-gradient-to-r from-primary to-accent-blue text-white hover:shadow-md hover:shadow-primary/30 transition-all duration-300"
                 >
-                  <span>Try it free</span>
+                  <span>Get started</span>
                   <ArrowRight size={16} />
                 </a>
               </div>
