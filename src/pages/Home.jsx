@@ -16,6 +16,7 @@ import {
   Linkedin
 } from 'lucide-react'
 import MainFeature from '../components/MainFeature'
+import Header from '../components/Header'
 
 // SVG Components
 const HeroSVG = () => (
@@ -56,10 +57,9 @@ const FeatureIcon = ({ icon, color }) => (
 )
 
 const Home = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
   
-  // Track active section on scroll
+  // Track active section on scroll (keeping this for any direct section monitoring outside header)
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll('section[id]')
@@ -129,14 +129,6 @@ const Home = () => {
     }
   ]
 
-  const navLinks = [
-    { name: "Features", href: "#features" },
-    { name: "How It Works", href: "#how-it-works" },
-    { name: "Developer Tools", href: "#dev-tools" },
-    { name: "Team Workflow", href: "#team-workflow" },
-    { name: "Pricing", href: "#pricing" }
-  ]
-
   const footerLinks = [
     {
       title: "Product",
@@ -182,103 +174,8 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Navigation */}
-      <header className="sticky top-0 z-50 bg-white bg-opacity-90 dark:bg-surface-900 dark:bg-opacity-90 backdrop-blur-sm border-b border-surface-200 dark:border-surface-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <a href="#" className="flex items-center">
-                <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center text-white font-bold text-lg">D</div>
-                <span className="ml-2 text-xl font-bold text-surface-900 dark:text-white">DevMode</span>
-              </a>
-            </div>
-            
-            <nav className="hidden md:flex space-x-8">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className={`text-sm font-medium transition-colors duration-200 ${
-                    activeSection === link.href.substring(1)
-                      ? 'text-primary dark:text-primary'
-                      : 'text-surface-600 hover:text-surface-900 dark:text-surface-300 dark:hover:text-white'
-                  }`}
-                >
-                  {link.name}
-                </a>
-              ))}
-            </nav>
-            
-            <div className="hidden md:flex items-center space-x-4">
-              <a href="#" className="text-sm font-medium text-surface-600 hover:text-surface-900 dark:text-surface-300 dark:hover:text-white">
-                Sign In
-              </a>
-              <a href="#cta" className="btn btn-primary">
-                Try it free
-              </a>
-            </div>
-            
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-surface-600 hover:text-surface-900 hover:bg-surface-100 dark:text-surface-300 dark:hover:text-white dark:hover:bg-surface-800 focus:outline-none"
-              >
-                <svg
-                  className="h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  {isMenuOpen ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  )}
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-        
-        {/* Mobile menu */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className="md:hidden bg-white dark:bg-surface-900 border-b border-surface-200 dark:border-surface-800"
-            >
-              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block px-3 py-2 rounded-md text-base font-medium ${
-                      activeSection === link.href.substring(1)
-                        ? 'text-primary bg-surface-50 dark:bg-surface-800'
-                        : 'text-surface-600 hover:text-surface-900 hover:bg-surface-50 dark:text-surface-300 dark:hover:text-white dark:hover:bg-surface-800'
-                    }`}
-                  >
-                    {link.name}
-                  </a>
-                ))}
-                <div className="pt-4 pb-3 border-t border-surface-200 dark:border-surface-700">
-                  <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-surface-600 hover:text-surface-900 hover:bg-surface-50 dark:text-surface-300 dark:hover:text-white dark:hover:bg-surface-800">
-                    Sign In
-                  </a>
-                  <a href="#cta" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 mt-2 rounded-md text-base font-medium bg-primary text-white">
-                    Try it free
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
+      {/* New Header Component */}
+      <Header />
 
       <main>
         {/* Hero Section */}
